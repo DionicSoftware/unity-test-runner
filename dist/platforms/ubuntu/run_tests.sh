@@ -191,7 +191,9 @@ for platform in ${TEST_PLATFORMS//;/ }; do
     echo "###########################"
     echo ""
 
-    if [[ "$platform" != "COMBINE_RESULTS" ]]; then
+    if [[ "$platform" == "custom" ]]; then
+      runTests="-executeMethod TestModule.RunTestsByScript"
+    elif [[ "$platform" != "COMBINE_RESULTS" ]]; then
       runTests="-runTests -testPlatform $platform -testResults $FULL_ARTIFACTS_PATH/$platform-results.xml"
     else
       runTests="-quit"
@@ -259,7 +261,9 @@ for platform in ${TEST_PLATFORMS//;/ }; do
   echo "###########################"
   echo ""
 
-  if [[ "$platform" != "COMBINE_RESULTS" ]]; then
+  if [[ "$platform" != "custom" ]]; then
+    echo "We don't support .xml results yet!"
+  elif [[ "$platform" != "COMBINE_RESULTS" ]]; then
     cat "$FULL_ARTIFACTS_PATH/$platform-results.xml"
     cat "$FULL_ARTIFACTS_PATH/$platform-results.xml" | grep test-run | grep Passed
   fi
