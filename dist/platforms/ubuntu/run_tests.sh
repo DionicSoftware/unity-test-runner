@@ -192,7 +192,7 @@ for platform in ${TEST_PLATFORMS//;/ }; do
     echo ""
 
     if [[ "$platform" == "custom" ]]; then
-      runTests="-executeMethod TestModule.PrintLogTest"
+      runTests="-executeMethod TestModule.RunTestsByScript"
     elif [[ "$platform" != "COMBINE_RESULTS" ]]; then
       runTests="-runTests -testPlatform $platform -testResults $FULL_ARTIFACTS_PATH/$platform-results.xml"
     else
