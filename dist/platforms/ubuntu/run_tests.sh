@@ -218,7 +218,7 @@ for platform in ${TEST_PLATFORMS//;/ }; do
   cat "$FULL_ARTIFACTS_PATH/$platform.log"
 
   if [[ $TEST_EXIT_CODE -eq 0 && "$platform" == "custom" ]]; then
-    if [[ grep -q "ALL_TESTS_SUCCESSFUL" "$FULL_ARTIFACTS_PATH/$platform.log" && ! grep -q "TEST_FAILURE" "$FULL_ARTIFACTS_PATH/$platform.log" ]]; then
+    if grep -q "ALL_TESTS_SUCCESSFUL" "$FULL_ARTIFACTS_PATH/$platform.log" && ! grep -q "TEST_FAILURE" "$FULL_ARTIFACTS_PATH/$platform.log"; then
         TEST_EXIT_CODE=0
     else
         TEST_EXIT_CODE=2
