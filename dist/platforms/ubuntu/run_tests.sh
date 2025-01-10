@@ -202,6 +202,7 @@ for platform in ${TEST_PLATFORMS//;/ }; do
 
   unity-editor \
     -batchmode \
+    -quit \
     -logFile "$FULL_ARTIFACTS_PATH/$platform.log" \
     -projectPath "$UNITY_PROJECT_PATH" \
     -coverageResultsPath "$FULL_COVERAGE_RESULTS_PATH" \
