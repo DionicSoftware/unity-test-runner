@@ -202,20 +202,21 @@ for platform in ${TEST_PLATFORMS//;/ }; do
 
   unity-editor \
     -batchmode \
-    -logFile "$FULL_ARTIFACTS_PATH/$platform.log" \
+    #-logFile "$FULL_ARTIFACTS_PATH/$platform.log" \
+    -logFile /dev/stdout \
     -projectPath "$UNITY_PROJECT_PATH" \
     -coverageResultsPath "$FULL_COVERAGE_RESULTS_PATH" \
     $runTests \
     -enableCodeCoverage \
     -debugCodeOptimization \
     -coverageOptions "$COVERAGE_OPTIONS" \
-    $CUSTOM_PARAMETERS
+    $CUSTOM_PARAMETERS | tee "$FULL_ARTIFACTS_PATH/$platform.log"
 
   # Catch exit code
   TEST_EXIT_CODE=$?
 
   # Print unity log output
-  cat "$FULL_ARTIFACTS_PATH/$platform.log"
+  #cat "$FULL_ARTIFACTS_PATH/$platform.log"
 
   if [[ $TEST_EXIT_CODE -eq 0 && "$platform" == "custom" ]]; then
     if grep -q "ALL_TESTS_SUCCESSFUL" "$FULL_ARTIFACTS_PATH/$platform.log" && ! grep -q "TEST_FAILURE" "$FULL_ARTIFACTS_PATH/$platform.log"; then
