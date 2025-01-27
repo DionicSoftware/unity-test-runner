@@ -200,7 +200,7 @@ for platform in ${TEST_PLATFORMS//;/ }; do
     fi
   fi
 
-  unity-editor \
+  stdbuf -oL unity-editor \
     -batchmode \
     #-logFile "$FULL_ARTIFACTS_PATH/$platform.log" \
     -logFile /dev/stdout \
