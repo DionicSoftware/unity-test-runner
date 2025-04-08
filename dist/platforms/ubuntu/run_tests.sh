@@ -275,20 +275,20 @@ for platform in ${TEST_PLATFORMS//;/ }; do
     cat "$FULL_ARTIFACTS_PATH/$platform-results.xml"
     cat "$FULL_ARTIFACTS_PATH/$platform-results.xml" | grep test-run | grep Passed
   fi
+
+  if [[ -f "$UNITY_PROJECT_PATH/clone0.log" ]]; then
+    echo ""
+    echo "###########################"
+    echo "#         Clone 0         #"
+    echo "###########################"
+    echo ""
+  
+    cat "$UNITY_PROJECT_PATH/clone0.log"
+  else 
+    echo "clone0.log doesn't exist!";
+  fi
 done
 
-
-if [ -f "$UNITY_PROJECT_PATH/clone0.log" ]; then
-  echo ""
-  echo "###########################"
-  echo "#         Clone 0         #"
-  echo "###########################"
-  echo ""
-
-  cat "$UNITY_PROJECT_PATH/clone0.log"
-else 
-  echo "clone0.log doesn't exist!";
-fi
 
 
 #
