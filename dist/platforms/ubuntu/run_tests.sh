@@ -279,13 +279,15 @@ done
 
 
 if [ -f "$UNITY_PROJECT_PATH/clone0.log" ]; then
-    echo ""
-    echo "###########################"
-    echo "#         Clone 0         #"
-    echo "###########################"
-    echo ""
+  echo ""
+  echo "###########################"
+  echo "#         Clone 0         #"
+  echo "###########################"
+  echo ""
 
-    cat "$UNITY_PROJECT_PATH/clone0.log"
+  cat "$UNITY_PROJECT_PATH/clone0.log"
+else 
+  echo "clone0.log doesn't exist!";
 fi
 
 
