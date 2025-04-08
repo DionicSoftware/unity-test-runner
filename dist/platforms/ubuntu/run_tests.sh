@@ -277,6 +277,18 @@ for platform in ${TEST_PLATFORMS//;/ }; do
   fi
 done
 
+
+if [ -f "$UNITY_PROJECT_PATH/clone0.log" ]; then
+    echo ""
+    echo "###########################"
+    echo "#         Clone 0         #"
+    echo "###########################"
+    echo ""
+
+    cat "$UNITY_PROJECT_PATH/clone0.log"
+fi
+
+
 #
 # Permissions
 #
